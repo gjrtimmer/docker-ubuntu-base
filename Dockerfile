@@ -13,7 +13,7 @@ RUN apt-get update && \
 ADD assets/install /install
 RUN /install
 
-RUN apt-get remove --purge --allow-remove-essential -y xz-utils wget gpg lsb-release ca-certificates && \
+RUN apt-get remove --purge --allow-remove-essential -y xz-utils wget gpg lsb-release && \
     apt-get autoremove --allow-remove-essential -y && \
     apt-get clean && \
     rm -rf /var/cache/apt/archives /var/lib/apt/lists/* /install
