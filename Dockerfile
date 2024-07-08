@@ -48,6 +48,6 @@ LABEL \
     org.opencontainers.image.source="${CI_PROJECT_URL}.git" \
     org.opencontainers.image.ref.name=${VCS_REF} \
     org.opencontainers.image.revision=${VCS_REF} \
-    org.opencontainers.image.base.name="ubuntu:23.04" \
+    org.opencontainers.image.base.name="ubuntu:24.04" \
     org.opencontainers.image.licenses=MIT \
     org.opencontainers.image.vendor=timmertech.nl
