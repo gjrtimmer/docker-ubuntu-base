@@ -8,12 +8,12 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TARGETARCH=${TARGETARCH}
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y tar xz-utils wget gpg coreutils lsb-release
+    apt-get install --no-install-recommends -y tar xz-utils wget gpg coreutils lsb-release ca-certificates
 
 ADD assets/install /install
 RUN /install
 
-RUN apt-get remove --purge --allow-remove-essential -y xz-utils wget gpg lsb-release && \
+RUN apt-get remove --purge --allow-remove-essential -y xz-utils wget gpg lsb-release ca-certificates && \
     apt-get autoremove --allow-remove-essential -y && \
     apt-get clean && \
     rm -rf /var/cache/apt/archives /var/lib/apt/lists/* /install
