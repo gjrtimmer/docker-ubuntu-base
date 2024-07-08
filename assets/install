@@ -4,6 +4,9 @@
 wget -L -O /tmp/noarch.tar.xz https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz
 tar -C / -Jxpf /tmp/noarch.tar.xz
 
+wget -L -O /tmp/symlinks-noarch.tar.xz https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-symlinks-noarch.tar.xz
+tar -C / -Jxpf /tmp/symlinks-noarch.tar.xz
+
 ARCH="${TARGETARCH}"
 case "${TARGETARCH}" in
     amd64)
