@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TARGETARCH=${TARGETARCH}
 
 RUN apt-get update && \
-    apt-get install -y tar xz-utils wget gpg coreutils lsb-release
+    apt-get install --no-install-recommends -y tar xz-utils wget gpg coreutils lsb-release
 
 ADD assets/install /install
 RUN /install
