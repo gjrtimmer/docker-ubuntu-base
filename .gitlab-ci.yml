@@ -7,29 +7,23 @@ include:
     rules:
       - if: $CI_COMMIT_TAG
         when: never
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      - if: $CI_PIPELINE_SOURCE == "schedule"
-      - if: $CI_PIPELINE_SOURCE == "push"
+      - when: always
     inputs:
-      healthcheck-uuid: 591ad74e-5888-492c-8d4e-c76eeb594ca3
+      healthcheck-uuid: baae4307-b60d-4117-8bfa-d93659ef41ad
 
   - component: $CI_SERVER_FQDN/templates/components/docker/arm64@1.1.0
     rules:
       - if: $CI_COMMIT_TAG
         when: never
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      - if: $CI_PIPELINE_SOURCE == "schedule"
-      - if: $CI_PIPELINE_SOURCE == "push"
+      - when: always
     inputs:
-      healthcheck-uuid: 568305a7-b580-49df-94e2-992be44e1604
+      healthcheck-uuid: 55cd2335-ade9-4dde-8f0d-bca421b537f9
 
   - component: $CI_SERVER_FQDN/templates/components/docker/multi@1.1.0
     rules:
       - if: $CI_COMMIT_TAG
         when: never
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      - if: $CI_PIPELINE_SOURCE == "schedule"
-      - if: $CI_PIPELINE_SOURCE == "push"
+      - when: always
     inputs:
       needs:
         - docker:amd64
@@ -38,7 +32,7 @@ include:
         --cache-from=type=registry,ref=$DOCKER_IMAGE_CACHE_PATH:amd64
         --cache-from=type=registry,ref=$DOCKER_IMAGE_CACHE_PATH:arm64
       tag: $DOCKER_IMAGE_PATH:latest
-      healthcheck-uuid: 05d4a642-89c0-4431-8d87-2e9aceb2d001
+      healthcheck-uuid: c2e4abd7-63b3-40e6-bc34-c51f7ce032db
 
   - component: $CI_SERVER_FQDN/templates/components/docker/multi@1.1.0
     rules:
