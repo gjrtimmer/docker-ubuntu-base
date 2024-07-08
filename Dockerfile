@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:24.04
+FROM harbor.local/docker.io/ubuntu:24.04
 
 ARG S6_OVERLAY_VERSION=3.2.0.0
 ARG TARGETARCH
