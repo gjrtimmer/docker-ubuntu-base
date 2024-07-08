@@ -21,7 +21,7 @@ RUN apt-get remove --purge --allow-remove-essential -y xz-utils wget gpg lsb-rel
 FROM scratch AS runtime
 COPY --from=0 / /
 
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+ENV PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     PS1="$(whoami)@$(hostname):$(pwd)\\$ " \
     HOME=/root \
     TERM=xterm \
