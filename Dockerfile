@@ -13,6 +13,9 @@ RUN apt-get update && \
 ADD assets/install /install
 RUN /install
 
+RUN RUN mkdir -p /run/s6/container_environment && \
+    ln -s /run/s6/container_environment /var/run/s6/container_environment
+
 RUN apt-get remove --purge --allow-remove-essential -y xz-utils wget gpg lsb-release && \
     apt-get autoremove --allow-remove-essential -y && \
     apt-get clean && \
