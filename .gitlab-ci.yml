@@ -40,3 +40,11 @@ include:
     inputs:
       name: release
       tag: $DOCKER_IMAGE_PATH:$CI_COMMIT_TAG
+
+keepalived:
+  stage: deploy
+  trigger:
+    forward:
+      yaml_variables: false
+      pipeline_variables: false
+    project: docker/keepalived
