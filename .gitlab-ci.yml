@@ -3,7 +3,7 @@ include:
   - component: $CI_SERVER_FQDN/templates/components/workflow/default@0.1.1
   - component: $CI_SERVER_FQDN/templates/components/publish/live@0.5.0
 
-  - component: $CI_SERVER_FQDN/templates/components/docker/amd64@1.3.0
+  - component: $CI_SERVER_FQDN/templates/components/docker/amd64@1.3.2
     rules:
       - if: $CI_COMMIT_TAG
         when: never
@@ -11,7 +11,7 @@ include:
     inputs:
       healthcheck-uuid: baae4307-b60d-4117-8bfa-d93659ef41ad
 
-  - component: $CI_SERVER_FQDN/templates/components/docker/arm64@1.3.0
+  - component: $CI_SERVER_FQDN/templates/components/docker/arm64@1.3.2
     rules:
       - if: $CI_COMMIT_TAG
         when: never
@@ -19,7 +19,7 @@ include:
     inputs:
       healthcheck-uuid: 55cd2335-ade9-4dde-8f0d-bca421b537f9
 
-  - component: $CI_SERVER_FQDN/templates/components/docker/multi@1.3.0
+  - component: $CI_SERVER_FQDN/templates/components/docker/multi@1.3.2
     rules:
       - if: $CI_COMMIT_TAG
         when: never
@@ -34,7 +34,7 @@ include:
       tag: $DOCKER_IMAGE_PATH:latest
       healthcheck-uuid: c2e4abd7-63b3-40e6-bc34-c51f7ce032db
 
-  - component: $CI_SERVER_FQDN/templates/components/docker/multi@1.3.0
+  - component: $CI_SERVER_FQDN/templates/components/docker/multi@1.3.2
     rules:
       - if: $CI_COMMIT_TAG
     inputs:
