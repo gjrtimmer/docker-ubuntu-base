@@ -1,4 +1,4 @@
-FROM harbor.local/docker.io/ubuntu:24.04 AS install
+FROM harbor.local/docker.io/ubuntu:24.10 AS install
 
 ARG S6_OVERLAY_VERSION=3.2.0.0
 ARG TARGETARCH
@@ -52,4 +52,4 @@ LABEL org.opencontainers.image.ref.name=${VCS_REF}
 LABEL org.opencontainers.image.revision=${VCS_REF}
 LABEL org.opencontainers.image.licenses=MIT
 LABEL org.opencontainers.image.vendor=timmertech.nl
-LABEL org.opencontainers.image.base.name="ubuntu:24.04"
+LABEL org.opencontainers.image.base.name="ubuntu:24.10"
