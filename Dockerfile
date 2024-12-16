@@ -1,6 +1,6 @@
 FROM harbor.local/docker.io/ubuntu:24.10 AS install
 
-ARG S6_OVERLAY_VERSION=3.2.0.0
+ARG S6_OVERLAY_VERSION=3.2.0.2
 ARG TARGETARCH
 
 ENV DEBIAN_FRONTEND=noninteractive \
