@@ -38,7 +38,8 @@ ENTRYPOINT ["/init"]
 ARG BUILD_DATE
 ARG CI_PROJECT_NAME
 ARG CI_PROJECT_URL
-ARG VCS_REF
+ARG VCS_REF_NAME
+ARG VCS_REF_SHA
 
 LABEL maintainer="G.J.R. Timmer <gjr.timmer@gmail.com>"
 LABEL org.opencontainers.image.version="${BUILD_DATE}"
@@ -48,8 +49,8 @@ LABEL org.opencontainers.image.title="${CI_PROJECT_NAME}"
 LABEL org.opencontainers.image.url="${CI_PROJECT_URL}"
 LABEL org.opencontainers.image.documentation="${CI_PROJECT_URL}"
 LABEL org.opencontainers.image.source="${CI_PROJECT_URL}.git"
-LABEL org.opencontainers.image.ref.name=${VCS_REF}
-LABEL org.opencontainers.image.revision=${VCS_REF}
+LABEL org.opencontainers.image.ref.name=${VCS_REF_NAME}
+LABEL org.opencontainers.image.revision=${VCS_REF_SHA}
 LABEL org.opencontainers.image.licenses=MIT
 LABEL org.opencontainers.image.vendor=timmertech.nl
 LABEL org.opencontainers.image.base.name="ubuntu:24.10"
