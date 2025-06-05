@@ -1,0 +1,55 @@
+---
+name: docker-release
+
+on:
+  push:
+    tags:
+      - '*.*'
+
+env:
+  PLATFORM: linux/amd64,linux/arm64,linux/arm/v7
+  DOCKERHUB_REPO: "${{ vars.DOCKERHUB_ORG }}/ubuntu-service"
+  BUILD_DATE: "${{ github.event.repository.updated_at }}"
+  CI_PROJECT_NAME: "${{ github.repository }}"
+  VCS_REF_NAME: "${{ github.ref_name }}"
+  VCS_REF_SHA: "${{ github.sha }}"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: "${{ secrets.DOCKERHUB_USERNAME || '' }}"
+          password: "${{ secrets.DOCKERHUB_PASSWORD || '' }}"
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha
+          platforms: ${{ env.PLATFORM }}
+          tags: |
+            ${{ env.DOCKERHUB_REPO }}:${{ github.ref_name }}
+            ${{ env.DOCKERHUB_REPO }}:latest
+          build-args: |
+            VERSION=${{ github.ref_name }}
+            VCS_REF_NAME=${{ env.VCS_REF_NAME }}
+            VCS_REF_SHA=${{ env.VCS_REF_SHA }}
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            CI_PROJECT_NAME=${{ env.CI_PROJECT_NAME }}
