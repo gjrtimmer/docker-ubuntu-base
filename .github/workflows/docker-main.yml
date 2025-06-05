@@ -12,7 +12,7 @@ env:
   DOCKERHUB_REPO: "${{ vars.DOCKERHUB_ORG }}/ubuntu-service"
   BUILD_DATE: "${{ github.event.repository.updated_at }}"
   CI_PROJECT_NAME: "${{ github.repository }}"
-  VCS_REF_NAME: "${{ github.ref.name }}"
+  VCS_REF_NAME: "${{ github.ref_name }}"
   VCS_REF_SHA: "${{ github.sha }}"
 
 
