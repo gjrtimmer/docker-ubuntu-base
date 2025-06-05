@@ -49,6 +49,10 @@ jobs:
           tags: ${{ env.DOCKERHUB_REPO }}:main
           build-args: |
             VERSION=main
+            VCS_REF_NAME=${{ env.VCS_REF_NAME }}
+            VCS_REF_SHA=${{ env.VCS_REF_SHA }}
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            CI_PROJECT_NAME=${{ env.CI_PROJECT_NAME }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v4
